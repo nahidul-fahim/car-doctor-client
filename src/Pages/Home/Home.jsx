@@ -1,9 +1,15 @@
+import About from "./About/About";
+import BannerCarousel from "./BannerCarousel";
+import Services from "./Services/Services";
+
 
 
 const Home = () => {
     return (
-        <div>
-            <h1 className="text-4xl font-bold">Homepage</h1>
+        <div className="space-y-[130px]">
+            <BannerCarousel></BannerCarousel>
+            <About />
+            <Services />
         </div>
     );
 };
