@@ -11,7 +11,7 @@ export default {
         white: '#fff',
         sub: '#151515',
         black: '#000',
-        gray: '#737373'
+        customgray: '#737373'
       }
     },
   },
