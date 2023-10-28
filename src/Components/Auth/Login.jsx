@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import loginBanner from '../../assets/images/login/login.svg';
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useState } from 'react';
+import { useContext } from 'react';
+import { AuthCont } from '../../Context/AuthContext/AuthContext';
 
 const Login = () => {
 
+    const { signInUser, currentUser } = useContext(AuthCont);
     const [showPassword, setShowPassword] = useState(true);
 
 
@@ -13,7 +16,12 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        signInUser(email, password)
+            .then(result => console.log(result.user))
+            .catch(error => console.log(error.code, error.message))
+
+
+        console.log(currentUser)
     }
 
 
