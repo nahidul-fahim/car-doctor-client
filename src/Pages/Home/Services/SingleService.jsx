@@ -10,7 +10,7 @@ const SingleService = ({ singleService }) => {
             <img src={img} alt="" className="rounded-xl" />
             <h2 className="text-2xl font-bold text-sub">{title}</h2>
             <div className="flex w-full justify-between items-center">
-                <h3 className="text-xl font-semibold text-main">Price: ${price}</h3>
+                <h3 className="text-xl font-bold text-main">Price: ${price}</h3>
                 <div className="border-[#ffffff00] border-2 hover:border-2 rounded-[50%] hover:border-main hover:text-main p-3 duration-500 cursor-pointer">
                     <FaArrowRight className=" text-main" />
                 </div>
