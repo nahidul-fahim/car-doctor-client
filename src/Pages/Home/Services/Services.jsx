@@ -4,15 +4,23 @@ import SingleService from "./SingleService";
 
 const Services = () => {
 
-    const [services, setServices] = useState([])
+    const [services, setServices] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setServices(data);
+                setLoading(false);
+            })
     }, []);
 
+    if (loading) {
+        return <span className="loading loading-ring loading-lg text-main"></span>
+    }
 
 
     return (

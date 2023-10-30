@@ -1,5 +1,5 @@
 import About from "./About/About";
-import BannerCarousel from "./BannerCarousel";
+import Carousel from "./Banner/Carousel";
 import Services from "./Services/Services";
 import Stats from "./Stats/Stats";
 
@@ -8,7 +8,7 @@ import Stats from "./Stats/Stats";
 const Home = () => {
     return (
         <div className="space-y-[130px]">
-            <BannerCarousel></BannerCarousel>
+            <Carousel />
             <About />
             <Services />
             <Stats />
