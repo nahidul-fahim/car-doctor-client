@@ -6,11 +6,7 @@ import { AuthCont } from "../../Context/AuthContext/AuthContext";
 
 const Header = () => {
 
-    const { logout, currentUser, loading } = useContext(AuthCont);
-
-    // if (loading) {
-    //     return <span className="loading loading-ring loading-lg text-main"></span>
-    // }
+    const { logout, currentUser } = useContext(AuthCont);
 
     const links = <>
         <NavLink className="font-semibold py-1" to="/">Home</NavLink>

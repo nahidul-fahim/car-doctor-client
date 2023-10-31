@@ -26,7 +26,7 @@ const AuthContext = ({ children }) => {
 
     // Login user by Email and Password
     const signInUser = (email, password) => {
-        setLoading(true)
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
