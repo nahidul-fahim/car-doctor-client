@@ -9,7 +9,7 @@ const MyCart = () => {
 
     const { currentUser } = useContext(AuthCont);
 
-    const [bookingData, setBookinData] = useState([])
+    const [bookingData, setBookinData] = useState([]);
 
     useEffect(() => {
 
@@ -22,6 +22,54 @@ const MyCart = () => {
                 console.log(data)
             })
     }, [currentUser?.email]);
+
+
+    // Handle delete from cart
+    const handleDeleteCartItem = id => {
+        console.log("delete button hit and found id", id);
+        fetch(`http://localhost:5000/cart/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log("data from delete", data);
+                if (data.deletedCount > 0) {
+                    const remainingBookings = bookingData.filter(singleBooking => singleBooking._id !== id);
+                    setBookinData(remainingBookings);
+                }
+            })
+    }
+
+
+    // Confirm booking in the cart
+    const handleBookingConfirm = id => {
+        console.log("Id from booking confirm", id)
+        fetch(`http://localhost:5000/cart/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'confirm'})
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.modifiedCount > 0){
+                    const remaining = bookingData.filter(singleBooking => singleBooking._id !== id);
+                    const updatedBooking = bookingData.find(singleUpdateBooking => singleUpdateBooking._id === id);
+                    updatedBooking.status = 'confirm';
+                    const newBookings = [updatedBooking, ...remaining];
+                    setBookinData(newBookings);
+                }
+            })
+    }
+
+
+
+
+
+
+
 
 
     return (
@@ -38,14 +86,15 @@ const MyCart = () => {
                         {
                             bookingData.map(singleBooking => <SingleCartRow
                                 key={singleBooking._id}
-                                singleBooking={singleBooking}></SingleCartRow>)
+                                singleBooking={singleBooking}
+                                handleDeleteCartItem={handleDeleteCartItem}
+                                handleBookingConfirm={handleBookingConfirm}></SingleCartRow>)
                         }
 
                     </tbody>
 
-
-
                 </table>
+
             </div>
 
 
