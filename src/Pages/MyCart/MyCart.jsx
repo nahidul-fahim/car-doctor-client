@@ -3,6 +3,7 @@ import { AuthCont } from "../../Context/AuthContext/AuthContext";
 import { useEffect } from "react";
 import { useState } from "react";
 import SingleCartRow from "./SingleCartRow";
+import axios from "axios";
 
 
 const MyCart = () => {
@@ -15,12 +16,18 @@ const MyCart = () => {
 
         const userEmail = currentUser?.email;
 
-        fetch(`http://localhost:5000/cart/${userEmail}`)
-            .then(res => res.json())
-            .then(data => {
-                setBookinData(data);
-                console.log(data)
-            })
+        axios.get(`http://localhost:5000/cart/${userEmail}`, {withCredentials: true})
+        .then(data => {
+            setBookinData(data.data);
+            console.log(data.data);
+        })
+
+        // fetch(`http://localhost:5000/cart/${userEmail}`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setBookinData(data);
+        //         console.log(data)
+        //     })
     }, [currentUser?.email]);
 
 
