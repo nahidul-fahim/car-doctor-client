@@ -34,7 +34,6 @@ const Login = () => {
             })
             .catch(error => console.log(error.code, error.message))
 
-
         console.log(currentUser)
     }
 

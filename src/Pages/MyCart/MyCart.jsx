@@ -21,13 +21,6 @@ const MyCart = () => {
             setBookinData(data.data);
             console.log(data.data);
         })
-
-        // fetch(`http://localhost:5000/cart/${userEmail}`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setBookinData(data);
-        //         console.log(data)
-        //     })
     }, [currentUser?.email]);
 
 
@@ -70,12 +63,6 @@ const MyCart = () => {
                 }
             })
     }
-
-
-
-
-
-
 
 
 
