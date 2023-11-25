@@ -9,6 +9,8 @@ const Home = () => {
     return (
         <div className="space-y-[130px]">
             <Carousel />
+            <Carousel />
+            <Carousel />
             <About />
             <Services />
             <Stats />

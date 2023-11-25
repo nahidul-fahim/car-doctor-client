@@ -2,13 +2,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 
-
 const useFetch = url => {
 
     const [output, setOutput] = useState([]);
     const [loading, setLoading] = useState(true);
-
-    console.log(url);
 
     useEffect(() => {
         fetch(url)

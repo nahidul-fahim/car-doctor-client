@@ -12,7 +12,6 @@ const Services = () => {
     const loading = output.loading;
 
 
-
     if (loading) {
         return <span className="loading loading-ring loading-lg text-main"></span>
     }
